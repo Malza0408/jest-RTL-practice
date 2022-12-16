@@ -14,11 +14,15 @@ function Button() {
       >
         Click!
       </button>
+      <label htmlFor="target-checkbox">Disable Button</label>
       <input
         type="checkbox"
+        id="target-checkbox"
         defaultChecked={isChecked}
         onChange={(e) => setIsChecked(e.target.checked)}
       />
+      <input type="checkbox" />
+      <input type="checkbox" />
     </>
   );
 }

@@ -3,8 +3,9 @@ import { logRoles } from "@testing-library/react";
 import Button from ".";
 
 test("button has red color", () => {
-  const { container } = render(<Button />);
-  logRoles(container);
+  // const { container } = render(<Button />);
+  // logRoles(container);
+  render(<Button />);
   const buttonElement = screen.getByRole("button", { name: /click!/i });
   expect(buttonElement).toHaveStyle("backgroundColor: red");
 });
@@ -20,14 +21,15 @@ test("button turns blue when clicked", () => {
 test("initial conditions", () => {
   render(<Button />);
   const colorButton = screen.getByRole("button", { name: /click!/i });
+  const checkbox = screen.getByRole("checkbox", { name: /disable button/i });
+
   expect(colorButton).toBeEnabled();
-  const checkbox = screen.getByRole("checkbox");
   expect(checkbox).not.toBeChecked();
 });
 
 test("check button enabled when click checkbox", () => {
   render(<Button />);
-  const checkbox = screen.getByRole("checkbox");
+  const checkbox = screen.getByRole("checkbox", { name: /disable button/i });
   const colorButton = screen.getByRole("button", { name: /click!/i });
 
   fireEvent.click(checkbox);
